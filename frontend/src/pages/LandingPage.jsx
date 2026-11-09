@@ -337,25 +337,17 @@ export default function LandingPage() {
                 Engineered for Performance, Security, and Scalability
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                WorkSphere is backed by Node.js, Express, and MySQL connection pooling with rate-limiting, strict Zod schema validation, bcrypt hashing, and an interactive OpenAPI 3.0 documentation suite.
+                WorkSphere is backed by Node.js, Express, and MySQL connection pooling with rate-limiting, strict Zod schema validation, and secure bcrypt password hashing.
               </p>
               <div className="flex flex-wrap gap-4 text-xs font-medium text-slate-300">
                 <span className="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700">RESTful JSON API</span>
                 <span className="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700">JWT Bearer Auth</span>
                 <span className="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700">Parameterized Queries</span>
-                <span className="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700">Interactive Swagger Docs</span>
+                <span className="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700">Real-time Activity Logs</span>
               </div>
             </div>
 
             <div className="flex-shrink-0 flex flex-col sm:flex-row items-center gap-4">
-              <a
-                href="http://localhost:5000/api/docs"
-                target="_blank"
-                rel="noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-600 transition"
-              >
-                Inspect Swagger Docs
-              </a>
               <Link
                 to="/register"
                 className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm shadow-lg shadow-blue-600/30 transition"
