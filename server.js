@@ -1,4 +1,4 @@
-require("dotenv").config();
+﻿require("dotenv").config();
 
 const app = require("./src/app");
 const { testConnection } = require("./src/config/db");
@@ -13,7 +13,7 @@ async function startServer() {
       console.log(`WorkSphere API running on port ${PORT}`);
     });
   } catch (error) {
-    console.error("Failed to start WorkSphere API.");
+    console.error("Failed to start WorkSphere API:", error.message || error);
     process.exit(1);
   }
 }

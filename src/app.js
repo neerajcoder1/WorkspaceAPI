@@ -1,4 +1,4 @@
-﻿const express = require("express");
+const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
@@ -94,7 +94,7 @@ app.get("/api/health", (req, res) => {
 // Mount modular API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/workspaces", workspaceRoutes);
-app.use("/api", userTaskRoutes);
+app.use("/api/tasks", userTaskRoutes); app.use("/api/user/tasks", userTaskRoutes);
 
 // Catch-all 404 handler for unknown routes
 app.use((req, res, next) => {
