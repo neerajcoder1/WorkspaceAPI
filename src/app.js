@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
@@ -13,11 +13,36 @@ const app = express();
 // Security middleware
 app.use(helmet());
 
-// CORS configuration supporting Vite dev and preview servers
+// CORS configuration supporting local dev, Vercel deployments, and custom production domains
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://127.0.0.1:5173",
+];
+
+if (process.env.CLIENT_URL) {
+  allowedOrigins.push(process.env.CLIENT_URL.replace(/\/$/, ""));
+}
+
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:5173", "http://localhost:5174", "http://127.0.0.1:5173"],
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps, curl, Postman, server-to-server)
+      if (!origin) return callback(null, true);
+      
+      const isAllowed =
+        allowedOrigins.includes(origin) ||
+        origin.endsWith(".vercel.app") ||
+        origin.includes("vercel.app") ||
+        process.env.NODE_ENV !== "production";
+
+      if (isAllowed) {
+        return callback(null, true);
+      }
+      return callback(null, true); // Fallback allow in production API
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   }),
@@ -50,9 +75,9 @@ const authLimiter = rateLimit({
 app.use("/api/auth/login", authLimiter);
 app.use("/api/auth/register", authLimiter);
 
-// Request parsing
-app.use(express.json({ limit: "100kb" }));
-app.use(express.urlencoded({ extended: false, limit: "100kb" }));
+// Parse JSON and URL-encoded bodies
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Swagger / OpenAPI documentation
 setupSwagger(app);
@@ -66,53 +91,30 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// API routes
+// Mount modular API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/workspaces", workspaceRoutes);
-app.use("/api/tasks", userTaskRoutes);
+app.use("/api", userTaskRoutes);
 
-// 404 handler for unmatched routes
-app.use((req, res) => {
+// Catch-all 404 handler for unknown routes
+app.use((req, res, next) => {
   res.status(404).json({
     success: false,
-    message: "Route not found",
+    message: `Cannot ${req.method} ${req.originalUrl}`,
   });
 });
 
-// Centralized error handler
+// Centralized error-handling middleware
 app.use((err, req, res, next) => {
-  if (res.headersSent) {
-    return next(err);
-  }
+  console.error("Unhandled Error:", err);
 
-  const status =
-    Number.isInteger(err.status) && err.status >= 400 && err.status <= 599
-      ? err.status
-      : 500;
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
 
-  if (status >= 500) {
-    console.error("Internal server error:", err);
-  }
-
-  let message = "Internal server error";
-
-  if (err.message && status < 500) {
-    message = err.message;
-  } else if (status === 400) {
-    message = "Bad request";
-  } else if (status === 401) {
-    message = "Authentication required";
-  } else if (status === 403) {
-    message = "Forbidden";
-  } else if (status === 404) {
-    message = "Not found";
-  } else if (status === 409) {
-    message = "Conflict";
-  }
-
-  return res.status(status).json({
+  res.status(status).json({
     success: false,
     message,
+    ...(process.env.NODE_ENV === "development" && { stack: err.stack }),
   });
 });
 
