@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import LandingNavbar from '../components/layout/LandingNavbar';
 import LandingFooter from '../components/layout/LandingFooter';
@@ -16,36 +16,10 @@ import {
   ShieldCheck,
   Check,
   Flame,
-  UserCheck,
-  Database,
-  Server,
-  Sparkles,
-  Circle,
-  Play
+  UserCheck
 } from 'lucide-react';
 
 export default function LandingPage() {
-  const [activeHeroTab, setActiveHeroTab] = useState('workspace');
-  const [demoTasks, setDemoTasks] = useState([
-    { id: 1, title: 'Database schema migration', status: 'done', priority: 'High', tag: 'Aiven MySQL' },
-    { id: 2, title: 'REST API Authentication (JWT)', status: 'done', priority: 'High', tag: 'Auth & RBAC' },
-    { id: 3, title: 'Multi-tenant Workspace Switcher', status: 'in-progress', priority: 'Medium', tag: 'Workspace' },
-    { id: 4, title: 'Interactive Kanban Board', status: 'todo', priority: 'Low', tag: 'Frontend' }
-  ]);
-
-  const toggleDemoTask = (id) => {
-    setDemoTasks((prev) =>
-      prev.map((t) => {
-        if (t.id === id) {
-          return { ...t, status: t.status === 'done' ? 'todo' : 'done' };
-        }
-        return t;
-      })
-    );
-  };
-
-  const completedCount = demoTasks.filter((t) => t.status === 'done').length;
-  const completionPercentage = Math.round((completedCount / demoTasks.length) * 100);
   const features = [
     {
       icon: Layers,
@@ -193,218 +167,84 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN: 3D Animated Interactive Platform Hub */}
-            <div className="lg:col-span-6 relative">
-              {/* Floating Ambient Badges (3D depth layer) */}
-              <div className="hidden sm:flex absolute -top-4 -right-2 z-20 items-center space-x-2 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 shadow-md text-xs font-semibold text-slate-800 animate-float-slow">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>⚡ Real-Time Sync • 18ms</span>
-              </div>
-
-              <div className="hidden sm:flex absolute -bottom-4 -left-3 z-20 items-center space-x-2 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-200 shadow-md text-xs font-semibold text-slate-800 animate-float-reverse">
-                <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-                <span>Enterprise RBAC Active</span>
-              </div>
-
-              {/* Main 3D Tilted Card */}
-              <div className="card-3d-tilt relative mx-auto rounded-2xl bg-white border border-slate-200/90 shadow-2xl shadow-slate-300/60 p-4 sm:p-5">
+            {/* RIGHT COLUMN: Clean Professional Welcome Card (No 3D / No Motion) */}
+            <div className="lg:col-span-6">
+              <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xl shadow-slate-200/50 p-6 sm:p-8 space-y-6">
                 
-                {/* Console Header Bar */}
-                <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-slate-100">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-rose-400" />
-                    <div className="w-3 h-3 rounded-full bg-amber-400" />
-                    <div className="w-3 h-3 rounded-full bg-emerald-400" />
-                    <span className="ml-2 text-xs font-semibold text-slate-400">console.worksphere.io</span>
+                {/* Header Welcome Badge */}
+                <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+                  <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
+                    <span className="w-2 h-2 rounded-full bg-blue-600"></span>
+                    <span>Welcome to WorkSphere</span>
                   </div>
-                  <div className="flex items-center space-x-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span>Live Systems Operational</span>
-                  </div>
+                  <span className="text-xs text-slate-400 font-medium">Enterprise Suite</span>
                 </div>
 
-                {/* Professional Welcome Hub Banner */}
-                <div className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl p-3.5 mb-4 shadow-sm relative overflow-hidden">
-                  <div className="relative z-10 flex items-center justify-between">
+                {/* Core Welcome Headline & Editorial */}
+                <div className="space-y-3">
+                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight leading-snug">
+                    Built for teams that value clarity, structured execution, and momentum.
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    WorkSphere eliminates the friction of disjointed tools. Bring your company workspaces, project milestones, and sprint backlogs into one unified, enterprise-grade environment designed for accountability.
+                  </p>
+                </div>
+
+                {/* 3 Core Value Commitments */}
+                <div className="space-y-3.5 pt-2">
+                  <div className="flex items-start space-x-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <div className="w-9 h-9 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Layers className="w-4 h-4" />
+                    </div>
                     <div>
-                      <div className="flex items-center space-x-2">
-                        <Sparkles className="w-4 h-4 text-amber-300" />
-                        <span className="text-xs font-bold uppercase tracking-wider text-amber-200">Interactive Preview</span>
-                      </div>
-                      <h3 className="text-sm sm:text-base font-bold text-white mt-0.5">Welcome to WorkSphere Platform</h3>
-                      <p className="text-[11px] text-slate-300">Orchestrate sprints, projects, and permissions seamlessly</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xl sm:text-2xl font-black text-white">{completionPercentage}%</div>
-                      <p className="text-[10px] text-slate-400 font-semibold uppercase">Sprint Target</p>
-                    </div>
-                  </div>
-                  {/* Subtle Background Glow */}
-                  <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-blue-500/20 rounded-full blur-xl pointer-events-none" />
-                </div>
-
-                {/* Interactive Mode Switcher */}
-                <div className="flex items-center space-x-2 mb-3.5 p-1 bg-slate-100 rounded-xl">
-                  <button
-                    type="button"
-                    onClick={() => setActiveHeroTab('workspace')}
-                    className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center space-x-1.5 cursor-pointer ${
-                      activeHeroTab === 'workspace'
-                        ? 'bg-white text-blue-600 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    <Zap className="w-3.5 h-3.5" />
-                    <span>Interactive Sprint Sandbox</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setActiveHeroTab('stack')}
-                    className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition flex items-center justify-center space-x-1.5 cursor-pointer ${
-                      activeHeroTab === 'stack'
-                        ? 'bg-white text-blue-600 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
-                  >
-                    <Server className="w-3.5 h-3.5" />
-                    <span>Live Cloud Architecture</span>
-                  </button>
-                </div>
-
-                {/* TAB 1: Interactive Sprint Sandbox */}
-                {activeHeroTab === 'workspace' ? (
-                  <div className="space-y-3">
-                    {/* Live Sprint Progress Bar */}
-                    <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-200/70">
-                      <div className="flex items-center justify-between text-xs mb-1.5 font-semibold text-slate-700">
-                        <span className="flex items-center gap-1.5">
-                          <Flame className="w-3.5 h-3.5 text-amber-500" />
-                          <span>Active Sprint Velocity</span>
-                        </span>
-                        <span className="text-slate-500 text-[11px]">
-                          {completedCount} of {demoTasks.length} milestones complete
-                        </span>
-                      </div>
-                      <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-                        <div
-                          className="bg-blue-600 h-2 rounded-full transition-all duration-500 ease-out"
-                          style={{ width: `${completionPercentage}%` }}
-                        />
-                      </div>
-                      <p className="text-[10px] text-slate-400 mt-1.5 font-medium flex items-center gap-1">
-                        <span>💡</span> Click any milestone card below to test live interactive state change:
+                      <h4 className="text-xs font-bold text-slate-900">Multi-Tenant Workspace Governance</h4>
+                      <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                        Securely isolate organizations, departments, and client accounts with strict role-based access controls (Owner, Admin, Member).
                       </p>
                     </div>
+                  </div>
 
-                    {/* Interactive Task Cards */}
-                    <div className="space-y-2">
-                      {demoTasks.map((task) => {
-                        const isDone = task.status === 'done';
-                        return (
-                          <div
-                            key={task.id}
-                            onClick={() => toggleDemoTask(task.id)}
-                            className={`p-2.5 rounded-xl border transition-all cursor-pointer flex items-center justify-between group ${
-                              isDone
-                                ? 'bg-emerald-50/50 border-emerald-200/80 hover:bg-emerald-50'
-                                : 'bg-white border-slate-200/90 hover:border-blue-300 hover:shadow-xs'
-                            }`}
-                          >
-                            <div className="flex items-center space-x-2.5">
-                              <div
-                                className={`w-5 h-5 rounded-md flex items-center justify-center transition ${
-                                  isDone
-                                    ? 'bg-emerald-600 text-white'
-                                    : 'border border-slate-300 group-hover:border-blue-500'
-                                }`}
-                              >
-                                {isDone ? (
-                                  <Check className="w-3.5 h-3.5 stroke-[3]" />
-                                ) : (
-                                  <div className="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-blue-500 transition" />
-                                )}
-                              </div>
-                              <div>
-                                <p
-                                  className={`text-xs font-semibold leading-tight transition ${
-                                    isDone ? 'text-slate-500 line-through' : 'text-slate-900'
-                                  }`}
-                                >
-                                  {task.title}
-                                </p>
-                                <span className="text-[10px] text-slate-400 font-medium">
-                                  Scope: {task.tag}
-                                </span>
-                              </div>
-                            </div>
-                            <span
-                              className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                                isDone
-                                  ? 'bg-emerald-100 text-emerald-800'
-                                  : 'bg-blue-100 text-blue-800'
-                              }`}
-                            >
-                              {isDone ? 'Done' : 'Active'}
-                            </span>
-                          </div>
-                        );
-                      })}
+                  <div className="flex items-start space-x-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <div className="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <FolderKanban className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">Structured Milestone Delivery</h4>
+                      <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                        Track projects from planning to deployment with clear owners, start-to-finish schedules, and automated progress metrics.
+                      </p>
                     </div>
                   </div>
-                ) : (
-                  /* TAB 2: Live Cloud Architecture */
-                  <div className="space-y-2.5 py-1">
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-xs">
-                          <Layers className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-bold text-slate-900">Frontend Tier (Edge CDN)</p>
-                          <p className="text-[10px] text-slate-500">React 19 • Vite • Tailwind • Vercel</p>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">
-                        200 OK
-                      </span>
-                    </div>
 
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-xs">
-                          <Server className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-bold text-slate-900">API Tier (Web Service)</p>
-                          <p className="text-[10px] text-slate-500">Node.js • Express • JWT • Render</p>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded">
-                        18ms Latency
-                      </span>
+                  <div className="flex items-start space-x-3.5 p-3.5 rounded-xl bg-slate-50 border border-slate-200/70">
+                    <div className="w-9 h-9 rounded-lg bg-violet-100 text-violet-700 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <ShieldCheck className="w-4 h-4" />
                     </div>
-
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-9 h-9 rounded-xl bg-violet-600 text-white flex items-center justify-center shadow-xs">
-                          <Database className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <p className="text-xs font-bold text-slate-900">Database Tier (Managed DB)</p>
-                          <p className="text-[10px] text-slate-500">Aiven MySQL 8.4 • SSL (TLSv1.2) Pool</p>
-                        </div>
-                      </div>
-                      <span className="text-[10px] font-bold bg-violet-100 text-violet-800 px-2 py-0.5 rounded">
-                        Encrypted
-                      </span>
-                    </div>
-
-                    <div className="pt-1 flex items-center justify-between text-[11px] text-slate-500 font-medium px-1">
-                      <span>Live Healthcheck: Verified</span>
-                      <span className="text-emerald-600 font-bold">● High Availability</span>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900">Enterprise Security & Audit Trail</h4>
+                      <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
+                        Complete transparency with real-time audit logs, TLS encryption, cloud database pooling, and token-based authentication.
+                      </p>
                     </div>
                   </div>
-                )}
+                </div>
+
+                {/* Bottom Trust & Verification Bar */}
+                <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
+                  <div className="flex items-center space-x-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span className="font-semibold text-slate-700">Production Ready</span>
+                    <span>•</span>
+                    <span>Aiven Cloud MySQL 8.4</span>
+                  </div>
+                  <Link
+                    to="/register"
+                    className="inline-flex items-center text-xs font-bold text-blue-600 hover:text-blue-700 group"
+                  >
+                    <span>Get Started</span>
+                    <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-0.5 transition" />
+                  </Link>
+                </div>
 
               </div>
             </div>
