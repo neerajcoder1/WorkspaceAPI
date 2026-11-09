@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import LandingNavbar from '../components/layout/LandingNavbar';
 import LandingFooter from '../components/layout/LandingFooter';
@@ -381,7 +381,7 @@ export default function LandingPage() {
               to="/register"
               className="inline-flex items-center space-x-2 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-semibold text-base shadow-xl shadow-purple-600/40 transition transform hover:-translate-y-0.5"
             >
-              <span>Get Started Now — It's Free</span>
+              <span>Get Started Now � It's Free</span>
               <ArrowRight className="w-5 h-5" />
             </Link>
             <Link

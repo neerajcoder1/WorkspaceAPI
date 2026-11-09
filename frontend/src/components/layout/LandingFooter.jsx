@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layers, ShieldCheck, Heart } from 'lucide-react';
 
@@ -20,7 +20,7 @@ export default function LandingFooter() {
             </p>
             <div className="flex items-center space-x-2 text-xs text-emerald-400 bg-emerald-950/40 border border-emerald-800/50 px-3 py-1.5 rounded-full w-fit">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>All Systems Operational • REST API Active</span>
+              <span>All Systems Operational � REST API Active</span>
             </div>
           </div>
 
@@ -40,7 +40,7 @@ export default function LandingFooter() {
           <div className="space-y-3">
             <h4 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">Resources</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="http://localhost:5000/api/docs" target="_blank" rel="noreferrer" className="hover:text-white transition">Swagger API Docs</a></li>
+              <li><a href="#features" className="hover:text-white transition">Platform Features</a></li>
               <li><a href="#workflow" className="hover:text-white transition">Workflow Guide</a></li>
               <li><Link to="/login" className="hover:text-white transition">Member Sign In</Link></li>
               <li><Link to="/register" className="hover:text-white transition">Create Workspace</Link></li>
@@ -64,7 +64,7 @@ export default function LandingFooter() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} WorkSphere SaaS Platform. All rights reserved.</p>
+          <p>� {new Date().getFullYear()} WorkSphere SaaS Platform. All rights reserved.</p>
           <p className="flex items-center gap-1">
             Engineered with precision for agile engineering teams.
           </p>

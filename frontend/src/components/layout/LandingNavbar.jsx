@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layers, ArrowRight, LayoutDashboard } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -27,10 +27,6 @@ export default function LandingNavbar() {
           <a href="#features" className="hover:text-white transition">Features</a>
           <a href="#solutions" className="hover:text-white transition">Solutions</a>
           <a href="#workflow" className="hover:text-white transition">How it Works</a>
-          <a href="http://localhost:5000/api/docs" target="_blank" rel="noreferrer" className="hover:text-white transition flex items-center gap-1.5">
-            Docs
-            <span className="text-[10px] font-semibold bg-blue-500/20 text-blue-300 px-1.5 py-0.5 rounded border border-blue-500/30">API</span>
-          </a>
         </nav>
 
         {/* Right CTA */}
