@@ -1,4 +1,4 @@
-﻿<div align="center">
+<div align="center">
 
 # 🌐 WorkSphere — Full-Stack SaaS Platform
 ### *One Workspace. Every Project. Complete Control.*
@@ -16,13 +16,14 @@
 
 **WorkSphere** is a commercial-grade, multi-tenant Workspace, Project, and Task Management SaaS platform engineered for agile engineering teams. Built with a decoupled architecture featuring an Express.js REST API with connection pooling and a React 19 single-page application.
 
-[Explore Swagger API Docs](http://localhost:5000/api/docs) • [API Health Check](http://localhost:5000/api/health) • [Frontend Client](http://localhost:5173)
+[Live Web Application](https://workspace-api-nine.vercel.app) • [API Health Check](https://workspaceapi-5tkq.onrender.com/api/health) • [OpenAPI Docs](https://workspaceapi-5tkq.onrender.com/api/docs)
 
 </div>
 
 ---
 
 ## 📑 Table of Contents
+- [Application Showcase & Screenshots](#-application-showcase--screenshots)
 - [Executive Overview](#-executive-overview)
 - [Key Features](#-key-features)
 - [System Architecture](#-system-architecture)
@@ -34,6 +35,74 @@
 - [Automated Testing](#-automated-testing)
 - [Repository Structure](#-repository-structure)
 - [Contributing & License](#-contributing--license)
+
+---
+
+## 📸 Application Showcase & Screenshots
+
+### 1. Landing Page & Enterprise Branding
+> Pure white enterprise SaaS landing page with Inter typography, navbar, and core capabilities overview.
+
+<div align="center">
+  <img src="docs/screenshots/landing-page.png" alt="WorkSphere Landing Page" width="92%" />
+</div>
+
+<br/>
+
+---
+
+### 2. Authentication Suite (Sign In & Sign Up)
+> Compact, high-trust auth screens with real-time validation, password visibility toggles, and JWT bearer tokens.
+
+| Member Sign In (`/login`) | Create Account (`/register`) |
+|:---:|:---:|
+| <img src="docs/screenshots/login-page.png" alt="Sign In Page" width="100%" /> | <img src="docs/screenshots/register-page.png" alt="Sign Up Page" width="100%" /> |
+
+<br/>
+
+---
+
+### 3. Analytics Dashboard & Overview (`/app`)
+> Live workspace metrics, active sprint progress, member rosters, and recent activity telemetry.
+
+<div align="center">
+  <img src="docs/screenshots/dashboard.png" alt="Workspace Dashboard" width="92%" />
+</div>
+
+<br/>
+
+---
+
+### 4. Interactive Kanban Task Board (`/app/tasks`)
+> Dynamic task orchestration across `To Do`, `In Progress`, `Review`, and `Done` states with priority flags and assignees.
+
+<div align="center">
+  <img src="docs/screenshots/tasks-kanban.png" alt="Kanban Task Board" width="92%" />
+</div>
+
+<br/>
+
+---
+
+### 5. Project Roadmap & Milestones (`/app/projects`)
+> Milestone-driven project tracking with start/due dates, completion percentages, and status filters.
+
+<div align="center">
+  <img src="docs/screenshots/projects.png" alt="Project Management" width="92%" />
+</div>
+
+<br/>
+
+---
+
+### 6. Multi-Tenant Workspaces & Activity Audit (`/app/workspaces` & `/app/activity`)
+> Workspace isolation, role-based governance, and real-time activity audit trails.
+
+| Workspace Management (`/app/workspaces`) | Real-Time Activity Log (`/app/activity`) |
+|:---:|:---:|
+| <img src="docs/screenshots/workspaces.png" alt="Workspaces" width="100%" /> | <img src="docs/screenshots/activity.png" alt="Activity Stream" width="100%" /> |
+
+<br/>
 
 ---
 
