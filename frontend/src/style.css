@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @layer base {
   body {
@@ -31,4 +31,40 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #94A3B8;
+}
+
+/* 3D & Floating Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 5s ease-in-out infinite;
+}
+
+.card-3d-tilt {
+  transform: perspective(1200px) rotateX(2deg) rotateY(-3deg);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.card-3d-tilt:hover {
+  transform: perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1.01);
 }
