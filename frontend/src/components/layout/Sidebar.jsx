@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import {
@@ -43,7 +43,7 @@ export default function Sidebar({ onOpenCreateWorkspace, mobileOpen, onCloseMobi
         {/* Brand Header */}
         <div className="h-18 flex items-center px-6 border-b border-slate-200/90 bg-white">
           <Link to="/app" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-600/30 group-hover:bg-blue-700 transition">
+            <div className="w-10 h-10 rounded-xl bg-slate-900 group-hover:bg-black flex items-center justify-center text-white shadow-md shadow-slate-900/20 transition">
               <Layers className="w-5 h-5 text-white" />
             </div>
             <div>

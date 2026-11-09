@@ -9,9 +9,9 @@ export default function LandingNavbar() {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200/90 shadow-2xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
-        {/* Brand */}
+        {/* Brand with Black Logo Icon */}
         <Link to="/" className="flex items-center space-x-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-violet-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:from-blue-700 group-hover:to-violet-700 transition">
+          <div className="w-10 h-10 rounded-xl bg-slate-900 group-hover:bg-black flex items-center justify-center text-white shadow-md shadow-slate-900/20 transition">
             <Layers className="w-5 h-5 text-white" />
           </div>
           <div className="flex flex-col">

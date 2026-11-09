@@ -10,7 +10,7 @@ export default function LandingFooter() {
           {/* Brand info */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-sm">
+              <div className="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-white shadow-sm">
                 <Layers className="w-5 h-5" />
               </div>
               <span className="text-xl font-bold tracking-tight text-slate-900">WorkSphere</span>

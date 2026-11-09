@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import {
@@ -70,10 +70,8 @@ export default function Login() {
           {/* Brand Header */}
           <div className="relative z-10">
             <Link to="/" title="Return to WorkSphere home" className="inline-flex items-center space-x-3 group mb-8">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-blue-500 p-0.5 shadow-lg shadow-purple-900/40">
-                <div className="w-full h-full bg-[#0B1020] rounded-[10px] flex items-center justify-center group-hover:bg-[#0B1020]/80 transition">
-                  <Layers className="w-5 h-5 text-purple-400 group-hover:text-blue-400 transition" />
-                </div>
+              <div className="w-10 h-10 rounded-xl bg-black border border-slate-700 flex items-center justify-center shadow-lg shadow-black/40 group-hover:border-slate-500 transition">
+                <Layers className="w-5 h-5 text-white" />
               </div>
               <div>
                 <span className="text-xl font-bold tracking-tight text-white block">WorkSphere</span>
