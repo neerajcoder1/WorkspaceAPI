@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = require("../utils/token");
 
 function authenticateToken(req, res, next) {
   // Read Authorization header
@@ -16,7 +17,7 @@ function authenticateToken(req, res, next) {
 
   try {
     // Verify JWT signature and expiration
-    const decoded = jwt.verify(token, process.env.JWT_SECRET, {
+    const decoded = jwt.verify(token, JWT_SECRET, {
       algorithms: ["HS256"],
     });
 

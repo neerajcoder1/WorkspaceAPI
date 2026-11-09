@@ -1,16 +1,18 @@
 const jwt = require("jsonwebtoken");
 
+const JWT_SECRET = process.env.JWT_SECRET || "worksphere-jwt-secret-key-production-fallback-2026";
+
 function generateAccessToken(user) {
   return jwt.sign(
     {
       sub: String(user.id),
     },
-    process.env.JWT_SECRET,
+    JWT_SECRET,
     {
-      expiresIn: process.env.JWT_EXPIRES_IN || "15m",
+      expiresIn: process.env.JWT_EXPIRES_IN || "7d",
       algorithm: "HS256",
     },
   );
 }
 
-module.exports = { generateAccessToken };
+module.exports = { generateAccessToken, JWT_SECRET };
